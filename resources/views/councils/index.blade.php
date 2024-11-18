@@ -1,37 +1,31 @@
-<!-- resources/views/councils/index.blade.php -->
-
-@extends('layouts.app') <!-- Adjust this if your layout file is named differently -->
+@extends('layouts.app')
 
 @section('content')
     <div class="container">
-        @if(session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <h1>Councils</h1>
-        <a href="{{ route('councils.create') }}" class="btn btn-primary">Create New Council</a>
-
+        <h2>Land Plots</h2>
+        <a href="{{ route('land_plots.create') }}" class="btn btn-primary">Add New Plot</a>
         <table class="table">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
+                    <th>Plot Number</th>
+                    <th>Block</th>
+                    <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($councils as $council)
+                @foreach($plots as $plot)
                     <tr>
-                        <td>{{ $council->id }}</td>
-                        <td>{{ $council->name }}</td>
+                        <td>{{ $plot->lotNumber }}</td>
+                        <td>{{ $plot->block }}</td>
+                        <td>{{ ucfirst($plot->status) }}</td>
                         <td>
-                            <a href="{{ route('councils.edit', $council->id) }}" class="btn btn-warning">Edit</a>
-                            <form action="{{ route('councils.destroy', $council->id) }}" method="POST" style="display:inline;">
+                            <a href="{{ route('land_plots.show', $plot) }}" class="btn btn-info">View</a>
+                            <a href="{{ route('land_plots.edit', $plot) }}" class="btn btn-warning">Edit</a>
+                            <form action="{{ route('land_plots.destroy', $plot) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
                             </form>
                         </td>
                     </tr>

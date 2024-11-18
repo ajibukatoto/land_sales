@@ -11,6 +11,9 @@ use App\Http\Controllers\CouncilController;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/map', [MapController::class, 'showMap'])->name('map');
+Route::resource('councils', CouncilController::class);
+Route::resource('districts', \App\Http\Controllers\DistrictController::class);
+// Repeat for each entity
 
 // Route for the home page
 Route::get('/', [HomeController::class, 'index'])->name('home');
