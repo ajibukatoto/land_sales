@@ -130,7 +130,7 @@
 
 <!-- Footer -->
 <footer class="text-center py-3 bg-light mt-auto">
-    <p class="mb-0">© 2024 Land Teamwork. All rights reserved.</p>
+    <p class="mb-0">© <?= date('Y'); ?> Land Teamwork. All rights reserved. Developed by Man's Sniper Katoto.</p>
 </footer>
 
 <!-- Bootstrap JS -->
